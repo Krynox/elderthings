@@ -1,4 +1,4 @@
-package me.krynox.elderthings.client.localisation;
+package me.krynox.elderthings.localisation;
 
 public enum LocalisedTextCategory {
     ITEM,

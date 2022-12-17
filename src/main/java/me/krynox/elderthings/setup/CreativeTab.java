@@ -1,18 +1,14 @@
-package me.krynox.elderthings.common;
+package me.krynox.elderthings.setup;
 
 import me.krynox.elderthings.ElderThings;
-import me.krynox.elderthings.client.localisation.LocalisationHelper;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
+import me.krynox.elderthings.localisation.LocalisationHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ObjectHolder;
 
-import static me.krynox.elderthings.client.localisation.LocalisedTextCategory.CREATIVE_TAB;
-import static me.krynox.elderthings.setup.Registration.EXAMPLE_BLOCK_ITEM;
+import static me.krynox.elderthings.localisation.LocalisedTextCategory.CREATIVE_TAB;
 
 @Mod.EventBusSubscriber(modid = ElderThings.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CreativeTab {
@@ -24,7 +20,7 @@ public class CreativeTab {
                 .icon(() -> new ItemStack(Items.ACACIA_BOAT))
                 .title(LocalisationHelper.newUnlocName(CREATIVE_TAB, "creativetab"))
                 .displayItems((featureFlags, output, hasOp) -> {
-                    output.accept(ModItems.EXAMPLE_BLOCK);
+                    output.accept(Registration.MYSTERIOUS_CERAMIC.get());
                 }));
     }
 

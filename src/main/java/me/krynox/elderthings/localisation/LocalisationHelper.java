@@ -1,4 +1,4 @@
-package me.krynox.elderthings.client.localisation;
+package me.krynox.elderthings.localisation;
 
 import me.krynox.elderthings.ElderThings;
 import net.minecraft.network.chat.Component;

@@ -1,6 +1,7 @@
 package me.krynox.elderthings.setup;
 
 import me.krynox.elderthings.ElderThings;
+import me.krynox.elderthings.block.MysteriousCeramicBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -23,14 +24,16 @@ public class Registration {
     public static final BlockBehaviour.Properties DEFAULT_BLOCK_PROPERTIES = BlockBehaviour.Properties.of(Material.STONE).strength(2f).requiresCorrectToolForDrops();
     public static final Item.Properties DEFAULT_ITEM_PROPERTIES = new Item.Properties();
 
-    // Conveniance function: Take a RegistryObject<Block> and make a corresponding RegistryObject<Item> from it
+    // Convenience function: Take a RegistryObject<Block> and make a corresponding RegistryObject<Item> from it
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), DEFAULT_ITEM_PROPERTIES));
     }
 
-    // Creates a new Block with the id "elderthings:example_block", combining the namespace and path
-    public static final RegistryObject<Block> EXAMPLE_BLOCK
-            = BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
-    // Creates a new BlockItem with the id "elderthings:example_block", combining the namespace and path
-    public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = fromBlock(EXAMPLE_BLOCK);
+    /////////////////////////////////////
+    ///// Registration Starts Here //////
+    /////////////////////////////////////
+
+    public static final RegistryObject<Block> MYSTERIOUS_CERAMIC
+            = BLOCKS.register("mysterious_ceramic", MysteriousCeramicBlock::new);
+    public static final RegistryObject<Item> MYSTERIOUS_CERAMIC_ITEM = fromBlock(MYSTERIOUS_CERAMIC);
 }
