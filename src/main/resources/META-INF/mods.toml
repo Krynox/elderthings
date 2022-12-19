@@ -21,7 +21,7 @@ modId="elderthings" #mandatory
 # see the associated build.gradle script for how to populate this completely automatically during a build
 version="${file.jarVersion}" #mandatory
  # A display name for the mod
-displayName="Example Mod" #mandatory
+displayName="ElderThings" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
@@ -29,9 +29,9 @@ displayName="Example Mod" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="" #optional
 # A text field displayed in the mod UI
-credits="" #optional
+credits="Programming and design by Krynox, textures and design by Kytuz." #optional
 # A text field displayed in the mod UI
-authors="Krynox" #optional
+authors="Krynox, Kytuz" #optional
 # Display Test controls the display for your mod in the server connection screen
 # MATCH_VERSION means that your mod will cause a red X if the versions on client and server differ. This is the default behaviour and should be what you choose if you have server and client elements to your mod.
 # IGNORE_SERVER_VERSION means that your mod will not cause a red X if it's present on the server but not on the client. This is what you should use if you're a server only mod.
@@ -43,6 +43,8 @@ authors="Krynox" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
 A mod where you domesticate eldritch horrors.
+
+They need lots of Vitamin E.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.elderthings]] #optional
