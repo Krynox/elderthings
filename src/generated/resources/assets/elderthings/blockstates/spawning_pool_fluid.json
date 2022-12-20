@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "elderthings:block/spawning_pool_fluid"
+    }
+  }
+}

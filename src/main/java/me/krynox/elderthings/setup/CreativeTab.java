@@ -21,6 +21,7 @@ public class CreativeTab {
                 .title(LocalisationHelper.newUnlocName(CREATIVE_TAB, "creativetab"))
                 .displayItems((featureFlags, output, hasOp) -> {
                     output.accept(Registration.MYSTERIOUS_CERAMIC.get());
+                    output.accept(Registration.SPAWNING_POOL_FLUID_BUCKET.get());
                 }));
     }
 
