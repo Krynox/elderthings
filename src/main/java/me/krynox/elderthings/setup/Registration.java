@@ -1,8 +1,8 @@
 package me.krynox.elderthings.setup;
 
 import me.krynox.elderthings.ElderThings;
+import me.krynox.elderthings.block.LarvaEggBlock;
 import me.krynox.elderthings.block.MysteriousCeramicBlock;
-import me.krynox.elderthings.block.SpawningPoolFluidBlock;
 import me.krynox.elderthings.fluid.SpawningPoolFluid;
 import me.krynox.elderthings.fluid.SpawningPoolFluidType;
 import net.minecraft.world.item.BlockItem;
@@ -15,10 +15,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.common.extensions.IForgeFluid;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -72,16 +70,29 @@ public class Registration {
     public static final RegistryObject<FlowingFluid> SPAWNNING_POOL_FLUID_FLOWING
             = FLUIDS.register("spawning_pool_fluid_flowing", SpawningPoolFluid.Flowing::new);
     public static final RegistryObject<LiquidBlock> SPAWNING_POOL_FLUID_BLOCK
-            = BLOCKS.register("spawning_pool_fluid", SpawningPoolFluidBlock::new);
+            = BLOCKS.register("spawning_pool_fluid", () ->
+                new LiquidBlock(SPAWNNING_POOL_FLUID, BlockBehaviour.Properties.of(Material.WATER)));
     public static final RegistryObject<Item> SPAWNING_POOL_FLUID_BUCKET
             = bucketFor(SPAWNNING_POOL_FLUID);
+
+
+    ///////////////
+    //// ITEMS ////
+    ///////////////
+
+
 
     //////////////////////////////
     //// BLOCKS & BLOCK_ITEMS ////
     //////////////////////////////
 
-    public static final RegistryObject<Block> MYSTERIOUS_CERAMIC
+    public static final RegistryObject<Block> LARVA_EGG_BLOCK
+            = BLOCKS.register("larva_egg", LarvaEggBlock::new);
+    public static final RegistryObject<Item> LARVA_EGG_ITEM
+            = fromBlock(LARVA_EGG_BLOCK);
+
+    public static final RegistryObject<Block> MYSTERIOUS_CERAMIC_BLOCK
             = BLOCKS.register("mysterious_ceramic", MysteriousCeramicBlock::new);
     public static final RegistryObject<Item> MYSTERIOUS_CERAMIC_ITEM
-            = fromBlock(MYSTERIOUS_CERAMIC);
+            = fromBlock(MYSTERIOUS_CERAMIC_BLOCK);
 }

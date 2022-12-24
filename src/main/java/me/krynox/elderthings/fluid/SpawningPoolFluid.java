@@ -1,7 +1,6 @@
 package me.krynox.elderthings.fluid;
 
 import me.krynox.elderthings.setup.Registration;
-import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 public abstract class SpawningPoolFluid extends ForgeFlowingFluid {

@@ -18,6 +18,9 @@ public class DataGenerators {
 //        generator.addProvider(event.includeServer(), (DataProvider.Factory<ModItemTags>) ( o -> new ModItemTags(o, event.getLookupProvider(), event.getExistingFileHelper())));
         generator.addProvider(event.includeClient(), (DataProvider.Factory<ModBlockStates>) ( o -> new ModBlockStates(o, event.getExistingFileHelper())));
         generator.addProvider(event.includeClient(), (DataProvider.Factory<ModItemModels>) ( o -> new ModItemModels(o, event.getExistingFileHelper())));
-        generator.addProvider(event.includeClient(), (DataProvider.Factory<ModLanguageProvider>) ModLanguageProvider::new);
+        generator.addProvider(event.includeClient(), (DataProvider.Factory<ModEnglishLanguageProvider>) ( o -> new ModEnglishLanguageProvider(o, "en_us")));
+        generator.addProvider(event.includeClient(), (DataProvider.Factory<ModEnglishLanguageProvider>) ( o -> new ModEnglishLanguageProvider(o, "en_gb")));
+        generator.addProvider(event.includeClient(), (DataProvider.Factory<ModEnglishLanguageProvider>) ( o -> new ModEnglishLanguageProvider(o, "en_ca")));
+        generator.addProvider(event.includeClient(), (DataProvider.Factory<ModEnglishLanguageProvider>) ( o -> new ModEnglishLanguageProvider(o, "en_au")));
     }
 }

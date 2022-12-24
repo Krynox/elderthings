@@ -3,7 +3,6 @@ package me.krynox.elderthings.block;
 import me.krynox.elderthings.ElderThings;
 import me.krynox.elderthings.setup.Registration;
 import me.krynox.elderthings.util.LevelUtil;
-import me.krynox.elderthings.util.One;
 import me.krynox.elderthings.util.TriResult;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -46,21 +45,21 @@ public class MysteriousCeramicBlock extends Block {
             BlockState right = level.getBlockState(p.relative(dir.getClockWise()));
             BlockState below = level.getBlockState(p.below());
 
-            if(!left.is(Registration.MYSTERIOUS_CERAMIC.get()) & !left.is(Blocks.WATER)) {
+            if(!left.is(Registration.MYSTERIOUS_CERAMIC_BLOCK.get()) & !left.is(Blocks.WATER)) {
                 return TriResult.STOP_FAIL;
             }
 
-            if(!right.is(Registration.MYSTERIOUS_CERAMIC.get()) & !right.is(Blocks.WATER)) {
+            if(!right.is(Registration.MYSTERIOUS_CERAMIC_BLOCK.get()) & !right.is(Blocks.WATER)) {
                 return TriResult.STOP_FAIL;
             }
 
-            if(!below.is(Registration.MYSTERIOUS_CERAMIC.get())) {
+            if(!below.is(Registration.MYSTERIOUS_CERAMIC_BLOCK.get())) {
                 return TriResult.STOP_FAIL;
             }
 
             if(b.is(Blocks.WATER)) {
                 return TriResult.CONTINUE;
-            } else if(b.is(Registration.MYSTERIOUS_CERAMIC.get())) {
+            } else if(b.is(Registration.MYSTERIOUS_CERAMIC_BLOCK.get())) {
                 return TriResult.STOP_PASS;
             } else {
                 return TriResult.STOP_FAIL;
@@ -142,7 +141,7 @@ public class MysteriousCeramicBlock extends Block {
     public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult res) {
         if(!level.isClientSide & player.getItemInHand(hand).is(Items.CHORUS_FRUIT)) {
             ImmutablePair<Boolean, Direction> r = validShape(level, pos);
-            if(r.left) replaceWater(level, pos.relative(r.right), Blocks.DIAMOND_BLOCK.defaultBlockState(), 512);
+            if(r.left) replaceWater(level, pos.relative(r.right), Registration.SPAWNING_POOL_FLUID_BLOCK.get().defaultBlockState(), 512);
         }
         return InteractionResult.PASS;
     }

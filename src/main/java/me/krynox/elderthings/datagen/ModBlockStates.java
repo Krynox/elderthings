@@ -15,7 +15,8 @@ public class ModBlockStates extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        simpleBlock(Registration.MYSTERIOUS_CERAMIC.get());
+        simpleBlock(Registration.MYSTERIOUS_CERAMIC_BLOCK.get());
+        simpleBlock(Registration.LARVA_EGG_BLOCK.get());
 
         //todo - clean up later. this was just to get it working asap
         ModelFile fluidModel = models().getBuilder(Registration.SPAWNING_POOL_FLUID_BLOCK.getId().getPath()).texture("particle", mcLoc("block/water_still"));
