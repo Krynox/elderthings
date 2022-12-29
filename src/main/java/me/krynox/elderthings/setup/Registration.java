@@ -1,10 +1,12 @@
 package me.krynox.elderthings.setup;
 
 import me.krynox.elderthings.ElderThings;
-import me.krynox.elderthings.block.LarvaEggBlock;
 import me.krynox.elderthings.block.MysteriousCeramicBlock;
+import me.krynox.elderthings.entity.EggEntity;
 import me.krynox.elderthings.fluid.SpawningPoolFluid;
 import me.krynox.elderthings.fluid.SpawningPoolFluidType;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
@@ -15,6 +17,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,12 +29,14 @@ public class Registration {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ElderThings.MODID);
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, ElderThings.MODID);
     public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, ElderThings.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, ElderThings.MODID);
 
     public static void registerAll(IEventBus bus) {
         FLUID_TYPES.register(bus);
         FLUIDS.register(bus);
         BLOCKS.register(bus);
         ITEMS.register(bus);
+        ENTITIES.register(bus);
     }
 
     public static final BlockBehaviour.Properties DEFAULT_BLOCK_PROPERTIES = BlockBehaviour.Properties.of(Material.STONE).strength(2f).requiresCorrectToolForDrops();
@@ -86,13 +91,21 @@ public class Registration {
     //// BLOCKS & BLOCK_ITEMS ////
     //////////////////////////////
 
-    public static final RegistryObject<Block> LARVA_EGG_BLOCK
-            = BLOCKS.register("larva_egg", LarvaEggBlock::new);
-    public static final RegistryObject<Item> LARVA_EGG_ITEM
-            = fromBlock(LARVA_EGG_BLOCK);
-
     public static final RegistryObject<Block> MYSTERIOUS_CERAMIC_BLOCK
             = BLOCKS.register("mysterious_ceramic", MysteriousCeramicBlock::new);
     public static final RegistryObject<Item> MYSTERIOUS_CERAMIC_ITEM
             = fromBlock(MYSTERIOUS_CERAMIC_BLOCK);
+
+
+    //////////////////
+    //// ENTITIES ////
+    //////////////////
+
+    public static final RegistryObject<EntityType<EggEntity>> EGG_ENTITY
+            = ENTITIES.register("eldritch_egg", () -> EntityType.Builder.of(EggEntity::new, MobCategory.MISC)
+            //todo - check out other available properties
+            .sized(1f,1f)
+            .build("egg"));
+    //public static final RegistryObject<Item> EGG_EGG = ITEMS.register ("eldritch_egg", new ForgeSpawnEggItem(EGG_ENTITY, 0xff0000, 0x00ff00, DEFAULT_ITEM_PROPERTIES));
+
 }

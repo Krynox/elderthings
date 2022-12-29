@@ -16,7 +16,7 @@ public class CreativeTab {
     public static void registerCreativeTab(CreativeModeTabEvent.Register e) {
         //todo - creative tab isn't appearing, maybe this event handler is improperly registered, maybe it's just not doing the right thing
 
-        e.registerCreativeModeTab(ElderThings.newResourceLocation("creativetab"), builder -> builder
+        e.registerCreativeModeTab(ElderThings.resLoc("creativetab"), builder -> builder
                 .icon(() -> new ItemStack(Items.ACACIA_BOAT))
                 .title(LocalisationHelper.newUnlocName(CREATIVE_TAB, "creativetab"))
                 .displayItems((featureFlags, output, hasOp) -> {

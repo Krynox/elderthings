@@ -22,7 +22,7 @@ public class ElderThings
         Registration.registerAll(modEventBus);
     }
 
-    public static ResourceLocation newResourceLocation(String name) {
+    public static ResourceLocation resLoc(String name) {
         return new ResourceLocation(MODID, name);
     }
 }
