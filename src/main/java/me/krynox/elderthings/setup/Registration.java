@@ -3,6 +3,7 @@ package me.krynox.elderthings.setup;
 import me.krynox.elderthings.ElderThings;
 import me.krynox.elderthings.block.MysteriousCeramicBlock;
 import me.krynox.elderthings.entity.EggEntity;
+import me.krynox.elderthings.entity.PuniEntity;
 import me.krynox.elderthings.fluid.SpawningPoolFluid;
 import me.krynox.elderthings.fluid.SpawningPoolFluidType;
 import net.minecraft.world.entity.EntityType;
@@ -17,7 +18,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -101,11 +101,18 @@ public class Registration {
     //// ENTITIES ////
     //////////////////
 
+    // NB: Don't forget to also register EntityAttributes in CommonSetup for LivingEntities.
+
     public static final RegistryObject<EntityType<EggEntity>> EGG_ENTITY
             = ENTITIES.register("eldritch_egg", () -> EntityType.Builder.of(EggEntity::new, MobCategory.MISC)
             //todo - check out other available properties
             .sized(1f,1f)
             .build("egg"));
+
+    public static final RegistryObject<EntityType<PuniEntity>> PUNI_ENTITY
+            = ENTITIES.register("puni", () -> EntityType.Builder.of(PuniEntity::new, MobCategory.MISC)
+            .sized(1f,1f)
+            .build("puni"));
     //public static final RegistryObject<Item> EGG_EGG = ITEMS.register ("eldritch_egg", new ForgeSpawnEggItem(EGG_ENTITY, 0xff0000, 0x00ff00, DEFAULT_ITEM_PROPERTIES));
 
 }

@@ -13,23 +13,27 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.constant.DefaultAnimations;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.ArrayList;
 
 import static net.minecraft.world.entity.HumanoidArm.RIGHT;
 
-public class EggEntity extends LivingEntity implements GeoAnimatable {
+public class PuniEntity extends LivingEntity implements GeoEntity {
     private static final EntityDataAccessor<Byte> GROWTH = SynchedEntityData.defineId(EggEntity.class, EntityDataSerializers.BYTE);
-    private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final Iterable<ItemStack> armorSlots = new ArrayList<>(); // lmao why is this required
 
-    public EggEntity(EntityType<? extends LivingEntity> pEntityType, Level pLevel) {
+    public PuniEntity(EntityType<? extends LivingEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -76,17 +80,19 @@ public class EggEntity extends LivingEntity implements GeoAnimatable {
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         //a boring controller that doesn't do anything. Makes sense, eggs aren't smart.
-        controllers.add(new AnimationController<EggEntity>(this, "controller", (x) -> PlayState.CONTINUE));
+        controllers.add(DefaultAnimations.genericIdleController(this));
+        /*
+        controllers.add(new AnimationController<PuniEntity>(this, "controller", (x) -> {
+            x.getController().setAnimation(RawAnimation.begin().thenLoop("animation.Puni.Idle"));
+            return PlayState.CONTINUE;
+        }));
+
+         */
     }
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
-    }
-
-    @Override
-    public double getTick(Object object) {
-        return 0;
     }
 
 }

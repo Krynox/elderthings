@@ -1,9 +1,8 @@
 package me.krynox.elderthings.setup;
 
 import me.krynox.elderthings.ElderThings;
-import me.krynox.elderthings.entity.client.EggModel;
 import me.krynox.elderthings.entity.client.EggRenderer;
-import net.minecraft.client.Minecraft;
+import me.krynox.elderthings.entity.client.PuniRenderer;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -24,5 +23,6 @@ public class ClientSetup {
                 .forEach(fluid -> ItemBlockRenderTypes.setRenderLayer(fluid, RenderType.translucent()));
 
         EntityRenderers.register(Registration.EGG_ENTITY.get(), EggRenderer::new);
+        EntityRenderers.register(Registration.PUNI_ENTITY.get(), PuniRenderer::new);
     }
 }
