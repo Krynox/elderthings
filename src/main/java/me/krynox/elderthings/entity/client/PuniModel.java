@@ -3,6 +3,7 @@ package me.krynox.elderthings.entity.client;
 import me.krynox.elderthings.ElderThings;
 import me.krynox.elderthings.entity.PuniEntity;
 import net.minecraft.resources.ResourceLocation;
+import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.model.GeoModel;
 
 public class PuniModel extends GeoModel<PuniEntity> {
